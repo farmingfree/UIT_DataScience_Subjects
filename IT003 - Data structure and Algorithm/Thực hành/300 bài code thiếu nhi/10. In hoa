@@ -1,0 +1,43 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+    int rows, columns;
+    cin >> rows >> columns;
+    vector<vector<char>> a(rows, vector<char>(columns));
+    
+
+
+    for (int i = 0;i < rows;i++) {
+        for (int j = 0;j < columns;j++) {
+            cin >> a[i][j];
+        }
+    }
+    vector<vector<char>> e(rows, vector<char>(columns));
+    e = a;
+    for (int i = 0;i < rows;i++) {
+        for (int j = 0;j + 1 < columns;j++) {
+            if (a[i][j] != a[i][j + 1] && a[i][j] == '#') {
+                e[i][j + 1] = '#';
+                
+            }
+        }
+    }
+    vector<vector<char>> o(rows, vector<char>(columns));
+    o = e;
+    for (int i = 0;i + 1 < rows;i++) {
+        for (int j = 0;j < columns;j++) {
+            if (e[i][j] != e[i + 1][j] && e[i][j] == '#') {
+                o[i + 1][j] = '#';
+                
+            }
+        }
+    }
+    for (int i = 0;i < rows;i++) {
+        for (int j = 0;j < columns;j++) {
+            cout << o[i][j];
+        }
+        cout << endl;
+    }
+    return 0;
+}
