@@ -1,0 +1,52 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+    long long n, m;
+    cin >> n >> m;
+    vector<long long> v(n);
+    vector<long long> a(m);
+    for (int i = 0;i < n;i++) {
+        cin >> v[i];
+    }
+    for (int i = 0;i < m;i++) {
+        cin >> a[i];
+
+    }
+    long long resulttruonghoptrungnhau=1000000;
+ for(int i=0;i<n;i++){
+     for(int j=0;j<m;j++){
+         if(v[i]==a[j]){if(resulttruonghoptrungnhau<v[i]){continue;}
+                        else{
+             resulttruonghoptrungnhau=v[i];}
+         }
+     }
+ }
+    if(resulttruonghoptrungnhau!=1000000){
+        cout<<resulttruonghoptrungnhau;
+        return 0;
+    }
+    else{
+    long long result1 = v[0];
+    for (int i = 1;i < n;i++) {
+        if (result1 >= v[i]) {
+            result1 = v[i];
+        }
+    }
+    long long result2 = a[0];
+    for (int i = 1;i < m;i++) {
+        if (result2 >= a[i]) {
+            result2 = a[i];
+        }
+    }
+
+    if (result1 > result2) {
+        cout << result2 << result1;
+    }
+    else if (result1 < result2) {
+        cout << result1 << result2;
+
+    }
+    
+    return 0;}
+}
