@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+int main() {
+    int t;
+    cin >> t;
+
+    long long* a = new long long[1000000];
+    int* s = new int[1000000];
+
+
+
+    for (int i = 0;i < t;i++) {
+        long long n, m;
+        long long j;
+        cin >> n >> m;
+        long long result = 0;
+
+        for (int i = 0;i < n;i++) {
+
+            cin >> a[i];
+        }
+        for (int i = 0;i < n;i++) {
+            j = m;
+            result += (j / (a[i] + 1)) + (j % (a[i] + 1));
+        }
+        cout << result << endl;
+
+    }
+    delete[] a;
+    delete []s;
+    return 0;
+}
