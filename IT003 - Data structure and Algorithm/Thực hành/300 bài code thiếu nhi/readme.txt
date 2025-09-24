@@ -1,1 +1,0 @@
-Lấy trên Hackerrank
