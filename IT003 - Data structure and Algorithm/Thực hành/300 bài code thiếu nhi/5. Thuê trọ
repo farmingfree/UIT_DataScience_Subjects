@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n, m, k, e = 0, f = 0;
+    cin >> n >> m >> k;
+
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (v[i] == 0) {
+            f++;
+        } else if (v[i] > k) {
+            e++;
+        }
+    }
+    if (n == f + e) {
+        cout << -1 << endl;
+        return 0;
+    }
+
+    int sotrovetruoc = -1, sotrovesau = -1;
+
+    for (int i = m - 2; i >= 0; i--) { 
+        if (v[i] != 0 && v[i] <= k) {
+            sotrovetruoc = i + 1; 
+            break;
+        }
+    }
+
+    for (int i = m; i < n; i++) {
+        if (v[i] != 0 && v[i] <= k) {
+            sotrovesau = i + 1; 
+            break;
+        }
+    }
+
+    int rawresult = -1;
+    if (sotrovetruoc != -1 && sotrovesau != -1) {
+        if (abs(m - sotrovetruoc) <= abs(m - sotrovesau)) {
+            rawresult = sotrovetruoc;
+        } else {
+            rawresult = sotrovesau;
+        }
+    } else if (sotrovetruoc != -1) {
+        rawresult = sotrovetruoc;
+    } else if (sotrovesau != -1) {
+        rawresult = sotrovesau;
+    }
+
+    int finalresult = (rawresult != -1) ? abs(m - rawresult) * 10 : -1;
+    cout << finalresult << endl;
+
+    return 0;
+}
