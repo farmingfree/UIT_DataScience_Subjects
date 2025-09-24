@@ -1,0 +1,20 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+    long long n;
+    cin >> n;
+    vector<long long> v(n);
+    for (int i = 0;i < n;i++) {
+        cin >> v[i];
+    }
+    long long result=0;
+    for (int i = 0;i < n;i++) {
+        if (i % 2 == 0) { result -= v[i]; }
+        if (i % 2 != 0) {
+            result += v[i   ];
+        }
+    }
+    cout << result;
+    return 0;
+}
