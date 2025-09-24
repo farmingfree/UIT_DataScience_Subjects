@@ -1,0 +1,30 @@
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    long long N, X;
+    cin >> N >> X;
+    long long a[500];
+    int result = 0;
+    for (int i = 0;i < N;i++) { cin >> a[i]; }
+    for (int i = 0;i < N;i++) {
+       
+            if (a[i] * a[i] + a[i] == X) { result += 1; }
+        }
+    for (int i = 0;i < N;i++) { cin >> a[i]; }
+    for (int i = 0;i < N;i++) {
+        for (int j = i + 1;j <= N ;j++) {
+            if (a[i] * a[i] + a[j] == X) { result += 1; }
+        }
+
+    }
+   
+    cout << result;
+    return 0;
+}
