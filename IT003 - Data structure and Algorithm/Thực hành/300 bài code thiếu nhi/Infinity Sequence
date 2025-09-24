@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+long long findKthDigit(long long k) {
+    long long digitCount = 1, range = 9, start = 1;
+    
+    while (k > digitCount * range) {
+        k -= digitCount * range;
+        digitCount++;
+        range *= 10;
+        start *= 10;
+    }
+
+    long long num = start + (k - 1) / digitCount;
+    long long digitPos = (k - 1) % digitCount;
+
+    for (long long i = digitCount - 1; i > digitPos; i--) {
+        num /= 10;
+    }
+
+    return num % 10;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int n;
+    cin >> n;
+
+    while (n--) {
+        long long k;
+        cin >> k;
+        cout << findKthDigit(k) << '\n';
+    }
+
+    return 0;
+}
